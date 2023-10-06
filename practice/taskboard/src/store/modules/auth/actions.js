@@ -41,7 +41,6 @@ export default {
             );
         }
 
-        const expiresIn = Number(responseData.expiresIn * 1000); //ms
         const expirationDate = new Date().getTime() + expiresIn;
 
         localStorage.setItem("tokenExpiration", expirationDate);
@@ -118,6 +117,13 @@ export default {
     },
 
     autoLogout(context) {
+        //tento trocar o token: se o token der erro, sai. Se não, continua na aplicação normalmente
+        // fetch
+        // pego a resposta
+        // se status.ok ->
+        //coloca o novo token no vuex e no localstorage
+        //coloco o novo tokenExpiration no vuex e no localstorage
+
         context.dispatch("logout");
         context.commit("SET_AUTO_LOGOUT");
     },
